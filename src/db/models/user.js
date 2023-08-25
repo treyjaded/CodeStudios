@@ -4,9 +4,10 @@ const { hashPassword, isValidPassword } = require('../../utils/auth-utils');
 class User {
   #passwordHash = null; // a private property
 
-  constructor({ id, username, password_hash }) {
+  constructor({ id, username, password_hash, profile_image_url }) {
     this.id = id;
     this.username = username;
+    this.profile_image_url = profile_image_url;
     this.#passwordHash = password_hash;
   }
 
@@ -28,12 +29,16 @@ class User {
     return user ? new User(user) : null;
   }
 
-  static async create(username, password) {
+  static async create(username, password, profile_image_url) {
     const passwordHash = await hashPassword(password);
 
-    const query = `INSERT INTO users (username, password_hash)
-      VALUES (?, ?) RETURNING *`;
-    const { rows: [user] } = await knex.raw(query, [username, passwordHash]);
+    const query = `INSERT INTO users (username, password_hash, profile_image_url)
+      VALUES (?, ?, ?) RETURNING *`;
+    const { rows: [user] } = await knex.raw(query, [username, passwordHash, "profile_image_url"]);
+
+    // const result = await knex.raw(query, [username, passwordHash, profile_image_url]);
+    // const rows = result.rows
+    // const user = rows[0];
     return new User(user);
   }
 
@@ -53,5 +58,10 @@ class User {
     isValidPassword(password, this.#passwordHash)
   );
 }
-
+// const testModel = async () => {
+//   const userObj = await User.create('Test User 9', '123', 'profile_image_url 2');
+//   console.log(userObj);
+//   console.log(userObj.isValidPassword('123'))
+// };
+// testModel();
 module.exports = User;

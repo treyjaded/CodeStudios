@@ -1,9 +1,11 @@
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
+  background-color: #000;
 }
 
-input, label {
+input,
+label {
   display: block;
 }
 
@@ -51,4 +53,70 @@ form {
   color: #EEBC32;
   font-weight: bold;
   font-style: italic;
+}
+
+/* ^^^^^^^^^^^^^^^^^^^^ NAV ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.post {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: rgb(124, 118, 118);
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  transition: transform 0.3s ease-in-out;
+}
+
+.like-button button {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  user-select: none;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+
+.like-button button:hover {
+}
+
+.like-button span {
+  margin-left: 5px;
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  fill: #ccc;
+  transition: fill 0.3s ease-in-out;
+}
+
+.heart-icon.active {
+  fill: red;
+  transform: scale(1.2); /* Optional: Increase size when active */
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
 }

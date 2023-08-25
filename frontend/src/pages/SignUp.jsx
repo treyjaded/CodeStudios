@@ -11,6 +11,7 @@ export default function SignUpPage() {
   const [errorText, setErrorText] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [profilePicture, setProfilePicture] = useState('');
   // We could also use a single state variable for the form data:
   // const [formData, setFormData] = useState({ username: '', password: '' });
   // What would be the pros and cons of that?
@@ -20,9 +21,9 @@ export default function SignUpPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorText('');
-    if (!username || !password) return setErrorText('Missing username or password');
+    if (!username || !password || !profilePicture) return setErrorText('Missing username or password or profile picture');
 
-    const [user, error] = await createUser({ username, password });
+    const [user, error] = await createUser({ username, password, profilePicture});
     if (error) return setErrorText(error.statusText);
 
     setCurrentUser(user);
@@ -33,6 +34,7 @@ export default function SignUpPage() {
     const { name, value } = event.target;
     if (name === 'username') setUsername(value);
     if (name === 'password') setPassword(value);
+    if( name === 'profilePicture') setProfilePicture(value);
   };
 
   return <>
@@ -56,6 +58,15 @@ export default function SignUpPage() {
         name="password"
         onChange={handleChange}
         value={password}
+      />
+      <label htmlFor="profilePicture">Profile Picture</label>
+      <input
+        autoComplete="off"
+        type="text"
+        id="profilePicture"
+        name="profilePicture"
+        onChange={handleChange}
+        value={profilePicture}
       />
 
       {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time

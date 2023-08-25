@@ -5,6 +5,8 @@ const migrationsDirectory = path.join(__dirname, 'src', 'db', 'migrations');
 const migrationsStub = path.join(__dirname, 'migration-stub.js');
 const seedsDirectory = path.join(__dirname, 'src', 'db', 'seeds');
 
+//directorycle: migrationsDirectory
+
 module.exports = {
   development: {
     client: 'pg',
@@ -13,7 +15,7 @@ module.exports = {
       port: process.env.PG_PORT || 5432,
       user: process.env.PG_USER || 'postgres',
       password: process.env.PG_PASS || 'postgres',
-      database: process.env.PG_DB || 'react_auth_example',
+      database: process.env.PG_DB || 'codeStudios',
     },
     migrations: {
       directory: migrationsDirectory,

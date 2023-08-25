@@ -22,11 +22,13 @@ export const getPatchOptions = (body) => ({
   body: JSON.stringify(body),
 });
 
+/* Always returns a two-value array where the first value is data (if present) and the second value
+is an error (if present) */
 export const fetchHandler = async (url, options = basicFetchOptions) => {
   try {
     const res = await fetch(url, options);
     if (!res.ok) return [null, { status: res.status, statusText: res.statusText }];
-    if (res.status === 204) return [true, null];
+    if (res.status === 204) return [true, null]; // delete responses
 
     const data = await res.json();
     return [data, null];

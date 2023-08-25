@@ -29,8 +29,9 @@ This is the project architecture for a simple todo app. The app will have a fron
 * When a user opens the app, the front-end will load and send an API request to fetch all tasks from the back-end. 
     * The back-end will retrieve the tasks from the database and return them as a response to the front-end.
     * The front-end will display the tasks on the UI.
-* When a user adds a new task, the front-end will send a request to the back-end’s API endpoint to create a new task in the database.
-    * The back-end will receive the request, ensuring that the required data is provided (user id, task title, task description). The back-end will generate the task id and timestamp and set the completion to `false`. It will then create the new task and store it in the database. The new task will be sent to the front-end as a response.
+* When a user adds a new post, the front-end will send a request to the back-end’s API endpoint to create a new post in the database.
+    * The back-end will receive the request, ensuring that the required data is provided (user id, content, media url). The back-end will generate the post id and timestamp. It will then create the new post and store it in the database. 
+    * The new post will be sent to the front-end as a response.
     * The front-end will update the UI based on the responses from the back-end.
 * When a user marks a task as completed or deletes a task, the front-end will send requests to the respective back-end API endpoints to update or remove the task from the database.
     * The back-end will receive these requests, ensuring that the required data is provided (user id, task id). The back-end will perform the appropriate action and send back a success/fail message in response.
