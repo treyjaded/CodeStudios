@@ -7,11 +7,11 @@ This is the project architecture for a simple todo app. The app will have a fron
 
 ### Front-End Components (React):
 * **User Interface (UI)**: The front-end will consist of the following components:
-   *  A task list
-   *  An input form for adding tasks
-   *  Each task will display the task title and description and have buttons for completing or deleting tasks
+   *  A post that will have multiple features including a like,cbookmark and comments feature.
+   *  A personal page that will include the user's post
+   *  Each post will display the amount of likes it has, a caption and a share button.
 * **State Management**:
-   * The task list component will manage the state of the list of tasks. Each task will be an object with the tasks id, title, description, and completion status
+   * The post component will manage the state of the likes. Each task will be an object with the tasks id, title, description, and completion status
    * The input form will manage the user input
 * **Communication with Back-End**: The front-end will make API calls to the back-end to retrieve tasks, add new tasks, mark tasks as completed, or delete tasks.
 
