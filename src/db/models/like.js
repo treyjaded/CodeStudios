@@ -29,12 +29,12 @@ class Like {
   static async deleteLike(id) {
     const query = 'DELETE FROM likes WHERE id = ?';
     const results = await knex.raw(query, [id]);
+    console.log(` Like number: ${id} has been deleted! `, results.rows[0]);
     return results.rows[0];
-    // return knex.raw('TRUNCATE users;');
   }
 }
 // const testModel = async () => {
-//   const postObj = await Like.getAllLikes(24);
+//   const postObj = await Like.deleteLike(331);
 //   console.log(postObj);
 // };
 // testModel();

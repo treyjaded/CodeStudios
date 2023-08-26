@@ -8,11 +8,11 @@ export default function CurrentUserContextProvider({ children }) {
   const [postData, setPostData] = useState([]);
   const [likesData, setLikesData] = useState([]);
   const [likesByPost, setLikesByPost] = useState([])
-  const [likeValue, setLikeValue] = useState(0)
+  const [likeValue, setLikeValue] = useState([])
   //Control a class dynamically using React state
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState([]);
 
-  const context = { currentUser, setCurrentUser, postData, setPostData, likesData, setLikesData, likesByPost, setLikesByPost, isActive, setIsActive };
+  const context = { currentUser, setCurrentUser, postData, setPostData, likesData, setLikesData, likesByPost, setLikesByPost, isActive, setIsActive,likeValue, setLikeValue };
   console.log();
   return (
     <CurrentUserContext.Provider value={context}>

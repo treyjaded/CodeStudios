@@ -1,12 +1,12 @@
-const list = require('./list');
 const create = require('./create');
 const update = require('./update');
 const getAllLikes = require('./getAllLikes');
+const deleteLike = require('./deleteLike');
 
 module.exports = {
-  list,
   create,
   update,
   getAllLikes,
+  deleteLike,
 
 };

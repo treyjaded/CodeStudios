@@ -26,7 +26,7 @@ Router.get('/posts/:id', postController.getPostsByUserId);
 
 Router.post('/likes', likeController.create);
 Router.get('/likes/:post_id', likeController.getAllLikes);
-// Router.get('/likes/:id', likeController.getLikesByUserId);
+Router.delete('/likes/:like_id', likeController.deleteLike);
 
 // These actions require authentication (only valid logged in users can do these things)
 // The checkAuthentication middleware will only run for these specified routes.
