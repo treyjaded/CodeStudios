@@ -1,51 +1,58 @@
 import React, { useState, useContext, useEffect } from 'react';
 import CurrentUserContext from "../contexts/current-user-context";
 import LikeButton from './LikeButton.jsx';
-import { createLike, deleteLike } from "../adapters/like-adapter";
+import { createLike, deleteLike, isPostLiked } from "../adapters/like-adapter";
 
 const Post = ({ post, caption, media, likes }) => {
-  const { currentUser, likesValue,  likesByPost, setLikesByPost, likeValue, setLikeValue } = useContext(CurrentUserContext);
+  const { currentUser, setLikesByPost, likeValue, setLikeValue } = useContext(CurrentUserContext);
   const [postStates, setPostStates] = useState({});
-  
+  const [active, setActiveState] = useState([])
+ 
  // ------------- WHEN A USER CLICKS ON THE LIKE BUTTON ---------------
  const handleLike = async () => {
-  const likedStatus = JSON.parse(localStorage.getItem(`likedStatus_${post.id}`)) || false;
+  const user_id = currentUser.id;
+  const post_id = post.id;
+  let isLikedResponse = await isPostLiked(currentUser.id, post.id )
+  setActiveState(isLikedResponse[0])
+  // const isLiked = isLikedResponse[0].isLiked;
+  // const like_id = isLikedResponse[0].like_id;
+  console.log(active);
+  try {
+   
 
-  if (!likedStatus) {
-    const [like, error] = await createLike({ user_id: currentUser.id, post_id: post.id });
+    if ( active === null) {
+      // If the post is not liked, create a like
+      setActiveState(false)
+      console.log(active);
+      console.log("LIKE")
+      const [like, error] = await createLike({ user_id, post_id });
+      if (!error) {
+        setLikeValue(like);
+        setLikesByPost(prevLikesByPost => {
+          const newLikesByPost = { ...prevLikesByPost[0] };
+          newLikesByPost[post.id] = newLikesByPost[post.id] ? newLikesByPost[post.id] + 1 : 1;
+          return [newLikesByPost];
+        });
+      }
+    } else if (active === false){
 
-    if (!error) {
-      setLikeValue(like);
-
-      // Update local storage to mark post as liked
-      localStorage.setItem(`likedStatus_${post.id}`, JSON.stringify(true));
-
-      // Increase the like count for the specific post
-      setLikesByPost(prevLikesByPost => {
-        const newLikesByPost = { ...prevLikesByPost[0] };
-        newLikesByPost[post.id] = newLikesByPost[post.id] ? newLikesByPost[post.id] + 1 : 1;
-        return [newLikesByPost];
-      });
-    }
-  } else {
-    if (likeValue && likeValue.id) {
-      await deleteLike(likeValue.id);
-
-      // Update local storage to mark post as unliked
-      localStorage.setItem(`likedStatus_${post.id}`, JSON.stringify(false));
-
-      // Update likeValue state to indicate unliked
+      console.log("DELETE")
+      console.log(active);
+      // If the post is liked, delete the like
       setLikeValue(null);
-
-      // Decrease the like count for the specific post
       setLikesByPost(prevLikesByPost => {
         const newLikesByPost = { ...prevLikesByPost[0] };
         newLikesByPost[post.id] = newLikesByPost[post.id] > 0 ? newLikesByPost[post.id] - 1 : 0;
         return [newLikesByPost];
       });
+      // await deleteLike(active.like_id);
     }
+  } catch (error) {
+    console.error(error);
   }
 };
+
+
 
 
   
@@ -53,7 +60,7 @@ const Post = ({ post, caption, media, likes }) => {
     <div className="post">
       <img src={media} alt="Post" />
       <p className="caption">{caption}</p>
-      <LikeButton isActive={postStates[post.id] ? true : false} likes={likes} handleLike={handleLike} post ={post} />
+      <LikeButton likes={likes} handleLike={handleLike} post ={post} />
     </div>
   );
 };

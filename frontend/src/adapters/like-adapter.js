@@ -16,3 +16,4 @@ export const deleteLike = async (like_id) => {
   fetchHandler(`${baseUrl}/${like_id}`, deleteOptions);
   return true;
 }
+export const isPostLiked = async (user_id, post_id) => fetchHandler(`api/users/${user_id}/posts/${post_id}/liked`)

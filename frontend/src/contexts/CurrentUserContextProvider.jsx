@@ -8,7 +8,7 @@ export default function CurrentUserContextProvider({ children }) {
   const [postData, setPostData] = useState([]);
   const [likesData, setLikesData] = useState([]);
   const [likesByPost, setLikesByPost] = useState([])
-  const [likeValue, setLikeValue] = useState([])
+  const [likeValue, setLikeValue] = useState(false);
   //Control a class dynamically using React state
   const [isActive, setIsActive] = useState([]);
 
