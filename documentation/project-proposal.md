@@ -1,16 +1,13 @@
 ### 🏙️ Mission Statement
-Clearly state the purpose and objectives of the project in a straightforward manner. Avoid unnecessary jargon or technical language that might confuse readers.
-* Keep it concise (1-3 sentences)
 
-*Example:* At Prints For A Purpose, our mission is to connect individuals in need of assistive devices with a compassionate global community of skilled builders. Using 3D printing technology, we can create affordable solutions that enhance independence and transform lives.
+The definition of a **portfolio** is a visual collection of your work, body of work that represents you. CodeStudios’ mission is to create a vast collection of inspiring design portfolios to the world, showcasing what you have achieved thus far and what you hope to accomplish in the future . 
 ___
 
 ### 🚀 Problem Statement
 
-Clearly define the problem or challenge your project aims to address. Explain why this problem is important and how your project will provide a solution.
-* Who the application's audience is
-* What the application does for the user
-* Why the user would use the application
+- My audience are designers and visual artists who want show off their work.
+- The application allows the user to create online portfolios and interact with other designers.
+- Users would use the application because of it’s dynamic design and accessibility to designers looking to share their portfolio.
 
 *Example:* Our application would mainly serve individuals with disability or mobility issues under financial or physical constraints. A priority would be those who live in underprivileged communities, conflict-affected areas, or communities with limited healthcare infrastructure. Our product will leverage the power of technology and community collaboration to make assistive devices more accessible and affordable to those in need. This is done by connecting individuals to a network of builders who facilitate the creation and distribution of affordable, 3D-printed devices.
 ___
@@ -33,9 +30,9 @@ ___
 
 
 ### 📚 Tech Stack: 
-Clearly state the technologies, frameworks, and tools you intend to use for the front-end and back-end development.
+Technologies that I will use includes the MERN which is represented by Mongo database, Express, J.S React and Node, and more specifically for the frontend, we will be using React as a framework , React Router for navigation, Formik and Yup for form and form validation, Redux Toolkit for a state management with Redux with persistent to store in local storage and React drop zone for image uploads.
 
-*Example:* We intend on using React for the front end, Node.js and Express for the backend, and PostgreSQL for the database. We will also incorporate Socket.io to implement the live chat feature and ChatGPT to implement the chatbot feature.
+For the backend, we are going to be using Node.Js as our runtime and Express.Js as our backend framework and Mongoose  for managing out database and Node.Js Multer for file upload .
 
 ___
 
@@ -53,13 +50,6 @@ ___
 If your project involves using specific data sources or APIs, mention them and explain how you plan to integrate them into your project.
 
 *Example:* This application will utilize the WeatherAPI API to retrieve live weather data based on the user's current location. We will use the WebLocation API to get the user's current location.
-___
-
-### 🤝 Team and Responsibilities (if applicable): 
-If you are working in a team, specify the roles and responsibilities of each team member and how you will collaborate throughout the project.
-
-*Example:* The team working on this project will consist of Ben Spector and Reuben Ogbonna. We will collaborate using Github Project boards to manage our tasks, Slack for communication, and Github to manage changes to the codebase. Reuben will primarily focus on building the blog feature while Ben will focus on building the live chat feature.
-
 ___
 
 ### 📓 References and Citations: 
