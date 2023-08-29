@@ -32,6 +32,7 @@ class Like {
     // console.log(` Like number: ${id} has been deleted! `, results.rows[0]);
     return results.rows[0];
   }
+  
 }
 // const testModel = async () => {
 //   const postObj = await Like.deleteLike(331);
