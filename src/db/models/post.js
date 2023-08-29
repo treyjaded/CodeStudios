@@ -1,8 +1,8 @@
 const knex = require('../knex');
 
 class Post {
-  static async getPostsByUserId(user_id) {
-    const query = 'SELECT * FROM posts WHERE user_id = ?';
+  static async getLikesByUserId(user_id) {
+    const query = 'SELECT * FROM likes WHERE user_id = ?';
     const results = await knex.raw(query, [user_id]);
     return results.rows;
   }
@@ -36,7 +36,7 @@ class Post {
   }
 }
 // const testModel = async () => {
-//   const postObj = await Post.getAllPosts();
+//   const postObj = await Post.getLikesByUserId(2);
 //   console.log(postObj);
 // };
 // testModel();

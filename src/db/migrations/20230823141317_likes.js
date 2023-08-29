@@ -8,6 +8,7 @@ exports.up = (knex) => knex.schema.createTable('likes', (table) => {
   table.foreign('user_id').references('id').inTable('users');
   table.integer('post_id').notNullable();
   table.foreign('post_id').references('id').inTable('posts');
+  table.boolean('is_liked').defaultTo(true);
   table.timestamps(true, true);
 });
 

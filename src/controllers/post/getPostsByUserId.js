@@ -9,3 +9,5 @@ const getPostsByUserId = async (req, res) => {
 };
 
 module.exports = getPostsByUserId;
+
+//in my posts, should have data about all users that have liked this post. 

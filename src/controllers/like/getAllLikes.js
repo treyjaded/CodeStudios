@@ -9,7 +9,7 @@ const getAllLikes = async (req, res) => {
 
     const likes = await Like.getAllLikes(post_id);
 
-    // console.log('Likes:', likes); // Log the retrieved likes for debugging
+    console.log('Likes:', likes); // Log the retrieved likes for debugging
 
     if (!likes) {
       return res.sendStatus(404);

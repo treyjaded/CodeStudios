@@ -29,7 +29,7 @@ class Like {
   static async deleteLike(id) {
     const query = 'DELETE FROM likes WHERE id = ?';
     const results = await knex.raw(query, [id]);
-    console.log(` Like number: ${id} has been deleted! `, results.rows[0]);
+    // console.log(` Like number: ${id} has been deleted! `, results.rows[0]);
     return results.rows[0];
   }
 }

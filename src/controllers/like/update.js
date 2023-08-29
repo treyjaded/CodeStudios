@@ -1,20 +1,17 @@
-const { isAuthorized } = require('../../utils/auth-utils');
+const knex = require('/Users/jaded/Development/codeStudios/src/db/knex.js'); // Import your Knex instance
 
-const updateUser = async (req, res) => {
-  const {
-    session, // this req.session property is put here by the handleCookieSessions middleware
-    db: { User }, // this req.db.User property is put here by the addModelsToRequest middleware
-    body: { username }, // this req.body property is put here by the client
-    params: { id }, // this req.params.id is a part of the request URL
-  } = req;
+async function updateLike(req, res) {
+  const { id } = req.params;
+  const { is_liked } = req.body;
 
-  if (!isAuthorized(id, session)) return res.sendStatus(403);
+  try {
+    const updatedLike = await knex('likes')
+      .where('id', id)
+      .update({ is_liked: is_liked }, ['id', 'is_liked']);
 
-  const user = await User.find(id);
-  if (!user) return res.sendStatus(404);
-
-  const updatedUser = await user.update(username);
-  res.send(updatedUser);
-};
-
-module.exports = updateUser;
+    return updatedLike[0];
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}

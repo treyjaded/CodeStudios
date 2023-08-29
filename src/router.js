@@ -20,7 +20,7 @@ Router.get('/me', userController.showMe);
 
 Router.post('/posts', postController.create);
 Router.get('/posts', postController.getAllPosts);
-Router.get('/posts/:id', postController.getPostsByUserId);
+Router.get('/posts/likedBy/:user_id', postController.getLikesByUserId);
 
 // LIKE ROUTES  //
 
